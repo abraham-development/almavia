@@ -107,6 +107,15 @@ Composiciones Remotion: `HeroLoop` 1920×1080 y `HeroLoopPortrait` 1080×1920. F
 
 Hasta que Abraham pase los datos reales, no los trates como finales: dirección `Av. Ejemplo 123`, Miraflores; horario lun–vie 9:00–20:00 y sáb 9:00–14:00; `hola@almavia.pe`; Facebook e Instagram en `"#"` (el JSON-LD solo publica `sameAs` que empiecen por `http`). El mapa embebe `site.address.mapsQuery`.
 
+## Despliegue en Hostinger
+
+- Web App: `https://darkgray-shrew-645074.hostingersite.com` hasta conectar el dominio definitivo.
+- Fuente: `abraham-development/almavia`, rama `main`, con despliegue automático.
+- Hostinger compila con Node 24, npm, script `build` y salida `.next`. El desarrollo local conserva pnpm 11.21.0.
+- Variables de producción: `NEXT_PUBLIC_WHATSAPP_NUMBER` y `NEXT_PUBLIC_SITE_URL`; sus valores se configuran en Hostinger y no se versionan.
+- Se usa `next.config.mjs`: el entorno de Hostinger no puede cargar el binario SWC nativo de Next 16 por su versión de glibc y el fallback WebAssembly falla al compilar `next.config.ts`.
+
 ## Aprendizajes
 
 - **2026-09-29** — Landing de una página montada: paleta y logo del brandbook, hero con video Remotion, imágenes Seedream, WhatsApp y redes. Servidor local con `pnpm dev` en el puerto 3000.
+- **2026-09-29** — Despliegue Web Apps conectado a GitHub. Hostinger usa npm solo en producción para evitar el conflicto de Corepack con pnpm, y `next.config.mjs` evita la compilación TypeScript del archivo de configuración cuando SWC cae a WebAssembly.
