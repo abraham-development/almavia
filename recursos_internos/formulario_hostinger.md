@@ -11,7 +11,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Build command \* | `build` (`npm run build` en Hostinger) |
+| Build command \* | `build:hostinger` (`npm run build:hostinger`) |
 | Package manager \* | npm (solo en Hostinger; el desarrollo local conserva pnpm 11.21.0) |
 | Output directory \* | `.next` |
 
