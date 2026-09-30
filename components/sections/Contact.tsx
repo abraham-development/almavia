@@ -1,11 +1,13 @@
 import { site } from "@/lib/site";
-import { ClockIcon, MailIcon, PinIcon } from "../icons";
+import { ArrowIcon, ClockIcon, MailIcon, PinIcon } from "../icons";
 import { SocialLinks } from "../SocialLinks";
 import { WhatsAppButton } from "../WhatsAppButton";
 
 export function Contact() {
   const { address, hours } = site;
-  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(address.mapsQuery)}&output=embed`;
+  const query = encodeURIComponent(address.mapsQuery);
+  const mapSrc = `https://www.google.com/maps?q=${query}&z=17&output=embed`;
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${query}`;
 
   return (
     <section id="contactanos" aria-labelledby="contacto-titulo" className="bg-esencia-50">
@@ -30,9 +32,18 @@ export function Contact() {
                 <span className="sr-only">Dirección</span>
               </dt>
               <dd className="font-light">
-                {address.street}
+                {address.street}, {address.unit}
                 <br />
                 {address.district}, {address.city} — {address.country}
+                <a
+                  href={directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="label mt-2 flex w-fit items-center gap-1.5 border-b border-tierra/40 pb-0.5 text-raiz-profundo transition-colors hover:border-aura-profundo hover:text-aura-profundo"
+                >
+                  Cómo llegar
+                  <ArrowIcon className="size-3.5" />
+                </a>
               </dd>
             </div>
             <div className="flex gap-4">
@@ -78,7 +89,7 @@ export function Contact() {
 
         <div className="relative min-h-[360px] overflow-hidden bg-brisa lg:min-h-full">
           <iframe
-            title={`Mapa de ubicación de Almavia en ${address.district}, ${address.city}`}
+            title={`Mapa: Almavia en ${address.street}, ${address.district}, ${address.city}`}
             src={mapSrc}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

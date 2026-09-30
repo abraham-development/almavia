@@ -12,21 +12,23 @@ export const site = {
     defaultMessage: "Hola Almavia, quisiera agendar una cita.",
   },
   address: {
-    street: "Av. Ejemplo 123",
+    street: "Calle Los Pinos 156",
+    unit: "Oficina 205-B",
     district: "Miraflores",
     city: "Lima",
     country: "Perú",
-    mapsQuery: "Miraflores, Lima, Perú",
+    // Sin la oficina: Google Maps ubica mejor el pin solo con calle y número.
+    mapsQuery: "Calle Los Pinos 156, Miraflores, Lima, Perú",
   },
   hours: [
     { days: "Lunes a viernes", time: "9:00 – 20:00" },
     { days: "Sábados", time: "9:00 – 14:00" },
   ],
   email: "hola@almavia.pe",
-  // Redes sociales (WhatsApp usa el número de .env.local). Reemplaza "#" por las URLs reales.
+  // Redes sociales (WhatsApp usa el número de .env.local). URLs sin parámetros de rastreo.
   socials: {
-    facebook: "#",
-    instagram: "#",
+    facebook: "https://www.facebook.com/people/Almavia-Almavia/61590138785982/",
+    instagram: "https://www.instagram.com/almavia.clinic/",
   },
 } as const;
 

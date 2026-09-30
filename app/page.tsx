@@ -18,7 +18,7 @@ const jsonLd = {
   email: site.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: site.address.street,
+    streetAddress: `${site.address.street}, ${site.address.unit}`,
     addressLocality: site.address.district,
     addressRegion: site.address.city,
     addressCountry: "PE",

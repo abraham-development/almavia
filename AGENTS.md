@@ -105,17 +105,19 @@ Composiciones Remotion: `HeroLoop` 1920×1080 y `HeroLoopPortrait` 1080×1920. F
 
 ## Contenido provisional
 
-Hasta que Abraham pase los datos reales, no los trates como finales: dirección `Av. Ejemplo 123`, Miraflores; horario lun–vie 9:00–20:00 y sáb 9:00–14:00; `hola@almavia.pe`; Facebook e Instagram en `"#"` (el JSON-LD solo publica `sameAs` que empiecen por `http`). El mapa embebe `site.address.mapsQuery`.
+Hasta que Abraham pase los datos reales, no los trates como finales: horario lun–vie 9:00–20:00 y sáb 9:00–14:00; `hola@almavia.pe`. Facebook e Instagram ya son reales (el JSON-LD solo publica `sameAs` que empiecen por `http`). El mapa embebe `site.address.mapsQuery`.
 
 ## Despliegue en Hostinger
 
 - Web App: `https://darkgray-shrew-645074.hostingersite.com` hasta conectar el dominio definitivo.
 - Fuente: `abraham-development/almavia`, rama `main`, con despliegue automático.
-- Hostinger compila con Node 24, npm, script `build` y salida `.next`. El desarrollo local conserva pnpm 11.21.0.
+- Hostinger compila con Node 24, npm, script `build:hostinger` (`next build --webpack`) y salida `.next`. El desarrollo local conserva pnpm 11.21.0 y el script `build` con Turbopack.
 - Variables de producción: `NEXT_PUBLIC_WHATSAPP_NUMBER` y `NEXT_PUBLIC_SITE_URL`; sus valores se configuran en Hostinger y no se versionan.
 - Se usa `next.config.mjs`: el entorno de Hostinger no puede cargar el binario SWC nativo de Next 16 por su versión de glibc y el fallback WebAssembly falla al compilar `next.config.ts`.
 
 ## Aprendizajes
 
 - **2026-09-29** — Landing de una página montada: paleta y logo del brandbook, hero con video Remotion, imágenes Seedream, WhatsApp y redes. Servidor local con `pnpm dev` en el puerto 3000.
-- **2026-09-29** — Despliegue Web Apps conectado a GitHub. Hostinger usa npm solo en producción para evitar el conflicto de Corepack con pnpm, y `next.config.mjs` evita la compilación TypeScript del archivo de configuración cuando SWC cae a WebAssembly.
+- **2026-09-29** — Dirección real: Calle Los Pinos 156, Oficina 205-B, Miraflores. `address.unit` guarda la oficina y `mapsQuery` la omite para que el pin de Google Maps caiga en el edificio. Contacto enlaza «Cómo llegar» (`maps/dir/?api=1`).
+- **2026-09-29** — Redes reales en `lib/site.ts`: Instagram `almavia.clinic` y la URL canónica del perfil de Facebook (`people/Almavia-Almavia/61590138785982/`; el enlace `share/1FqgKF9S8h` que pasó Abraham redirige ahí). Se guardan sin parámetros de rastreo (`stkn`, `mibextid`, `rdid`).
+- **2026-09-29** — Despliegue Web Apps conectado a GitHub. Hostinger usa npm solo en producción para evitar el conflicto de Corepack con pnpm, `next.config.mjs` evita compilar la configuración con SWC y `build:hostinger` usa Webpack porque el fallback SWC WebAssembly de su plataforma no admite Turbopack.
