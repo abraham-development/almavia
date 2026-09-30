@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Almavia — Landing
 
-## Getting Started
+Landing de **Almavia, estética y salud integral**. Next.js 16 (App Router) + Tailwind v4, video del hero hecho con Remotion e imágenes generadas con APIMart (Seedream).
 
-First, run the development server:
+## Puesta en marcha
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+cp .env.example .env.local   # completa APIMART_API_KEY y NEXT_PUBLIC_WHATSAPP_NUMBER
+pnpm install
+npm --prefix video install   # proyecto Remotion
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Flujo de assets
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Comando | Qué hace |
+|---|---|
+| `pnpm brand` | Recorta `recursos_internos/Logotipo_almavia.png` en isotipo y wordmark (versión horizontal y crema) y genera los íconos. |
+| `pnpm images` | Genera las imágenes con Seedream (`--force` regenera, `--only=a,b` filtra). Deja webp en `public/images/` y jpg en `video/public/images/`. |
+| `pnpm video:studio` | Abre Remotion Studio para editar `video/src/HeroLoop.tsx`. |
+| `pnpm video:render` | Renderiza `public/video/hero-{landscape,portrait}.{mp4,webm,jpg}`. |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Dónde editar
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Datos del negocio (WhatsApp, dirección, horario, redes): `lib/site.ts`
+- Servicios: `data/services.ts`
+- Slides del hero: `data/slides.ts`
+- Paleta y tipografías (brandbook): `app/globals.css`, `app/layout.tsx`

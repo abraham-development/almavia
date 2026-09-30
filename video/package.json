@@ -1,0 +1,37 @@
+{
+  "name": "video",
+  "version": "1.0.0",
+  "description": "My Remotion video",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@remotion/cli": "4.0.530",
+    "@remotion/tailwind-v4": "4.0.530",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.530",
+    "tailwindcss": "4.0.0",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.530",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.39.5",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "upgrade": "remotion upgrade",
+    "lint": "eslint src && tsc",
+    "render:landscape": "remotion render HeroLoop ../public/video/hero-landscape.mp4 --codec=h264 --crf=24 --muted && remotion render HeroLoop ../public/video/hero-landscape.webm --codec=vp9 --crf=38 --muted && remotion still HeroLoop ../public/video/hero-landscape.jpg --frame=60 --jpeg-quality=85",
+    "render:portrait": "remotion render HeroLoopPortrait ../public/video/hero-portrait.mp4 --codec=h264 --crf=24 --muted && remotion render HeroLoopPortrait ../public/video/hero-portrait.webm --codec=vp9 --crf=38 --muted && remotion still HeroLoopPortrait ../public/video/hero-portrait.jpg --frame=60 --jpeg-quality=85",
+    "render": "npm run render:landscape && npm run render:portrait"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}
