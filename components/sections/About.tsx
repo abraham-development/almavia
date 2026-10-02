@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { team } from "@/data/team";
+import { TeamCard } from "./TeamCard";
 
 const pillars = [
   {
@@ -47,21 +49,22 @@ export function About() {
             </h2>
             <div className="mt-8 space-y-5 text-base font-light leading-relaxed text-tierra/85 sm:text-lg">
               <p>
-                Almavia nace como un espacio donde la estética y el bienestar emocional se unen para
-                acompañar procesos de cambio desde una mirada integral.
+                ALMAVIA nace de una visión integral del cuidado, donde la salud, la belleza y el
+                bienestar emocional se conectan. Partimos de una valoración profesional y de tus
+                objetivos para ofrecerte una atención personalizada que respete tu esencia.
               </p>
               <p>
-                Creemos que la belleza no es solo una expresión externa, sino el reflejo de cómo te
-                sientes contigo misma. Por eso, cada experiencia se construye desde la empatía, la
-                cercanía y el respeto por tu proceso.
+                Creemos que cuidarte también significa escucharte, comprender cómo te sientes y
+                respetar tu proceso. Por eso, te brindamos una atención profesional y cercana, en un
+                espacio que invita a la calma y la confianza.
               </p>
             </div>
 
             <figure className="mt-10 border-l border-aura pl-6">
               <p className="label text-raiz-profundo">Nuestra misión</p>
               <blockquote className="mt-3 font-serif text-2xl font-light italic leading-snug">
-                Acompañarte en tu proceso de renovación y bienestar, fortaleciendo tu amor propio y
-                tu armonía interior.
+                Brindarte atención integral y personalizada, cuidando tu salud física y emocional y
+                realzando tu belleza natural, con criterio profesional, empatía y respeto.
               </blockquote>
             </figure>
           </div>
@@ -78,6 +81,30 @@ export function About() {
             </li>
           ))}
         </ul>
+      </div>
+
+      <div aria-labelledby="equipo-titulo" role="group" className="bg-esencia-50">
+        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-12 lg:py-28">
+          <div className="mx-auto max-w-2xl text-center">
+            <h3
+              id="equipo-titulo"
+              className="font-serif text-4xl font-light leading-tight sm:text-5xl"
+            >
+              Ellos son parte <em className="italic text-aura-profundo">del equipo Almavia.</em>
+            </h3>
+            <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-tierra/80 text-balance sm:text-lg">
+              Profesionales que te acompañan con criterio, cercanía y respeto por tu proceso.
+            </p>
+          </div>
+
+          <ul className="mx-auto mt-14 grid max-w-sm gap-10 md:max-w-none md:grid-cols-3 md:gap-8 lg:mt-20 lg:gap-10">
+            {team.map((member) => (
+              <li key={member.id}>
+                <TeamCard member={member} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

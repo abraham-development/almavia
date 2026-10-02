@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # Almavia — memoria del proyecto
 
-Landing de **Almavia, estética y salud integral** (Lima). Una sola página en español (`lang="es"`, Open Graph `es_PE`). Abraham itera en código; los textos, horarios y dirección actuales son provisionales hasta que él los reemplace.
+Landing de **Almavia, estética y salud integral** (Lima). Una sola página en español (`lang="es"`, Open Graph `es_PE`). Abraham itera en código. La dirección y las redes ya son reales; los textos, el horario y el email siguen provisionales hasta que él los reemplace.
 
 ## Cómo usar y actualizar esta memoria
 
@@ -34,7 +34,7 @@ pnpm install
 pnpm dev          # http://localhost:3000  (carga .env.local)
 ```
 
-`.env.example` es la plantilla versionada. `.env*` se ignora salvo ese ejemplo.
+No hay plantilla versionada: `.env.example` se eliminó en `alma1.3`. `.env*` está en `.gitignore` (la excepción `!.env.example` sigue, pero el archivo no existe). Las variables locales van en `.env.local`, que no se commitea. El `README.md` todavía dice `cp .env.example .env.local`; esa instrucción ya no aplica.
 
 | Variable | Uso |
 |---|---|
@@ -53,10 +53,12 @@ pnpm dev          # http://localhost:3000  (carga .env.local)
 | `lib/whatsapp.ts` | `buildWhatsAppUrl()` → `https://wa.me/…`. |
 | `lib/socials.ts` | Orden fijo: WhatsApp, Facebook, Instagram. |
 | `data/services.ts` | Tres servicios (faciales, corporales, bienestar). |
+| `data/team.ts` | Equipo en Nosotros: retrato 4:5, alt y `name`/`role`/`bio` opcionales. Se pinta con `components/sections/TeamCard.tsx`. |
 | `data/slides.ts` | Slides del hero. El primero es `kind: "video"`; el resto, imagen. |
 | `components/header/` | Header sticky, TopBar, NavBar, menú móvil, Logo. |
 | `components/hero/` | Slider automático y video de fondo. |
 | `components/sections/` | About, Services, Contact, Footer. |
+| `recursos_internos/equipo/` | Fotos originales del equipo; `public/images/equipo-*.webp` son sus recortes 4:5 (800×1000). |
 | `public/brand/` | Salida de `pnpm brand`. No editar a mano. |
 | `public/images/` | WebP de la landing. `video/public/images/` son los JPG para Remotion. |
 | `public/video/` | `hero-{landscape,portrait}.{mp4,webm,jpg}`. |
@@ -95,13 +97,13 @@ Composiciones Remotion: `HeroLoop` 1920×1080 y `HeroLoopPortrait` 1080×1920. F
 
 ## Convenciones de código
 
-- Copy y comentarios en español. Componentes de servidor por defecto; `"use client"` solo en header, menú, hero, video y WhatsApp flotante.
+- Copy y comentarios en español. Componentes de servidor por defecto; `"use client"` solo en header, menú, hero, video, WhatsApp flotante y `TeamCard`.
 - Datos de negocio solo en `lib/site.ts`. Un tratamiento nuevo entra en `data/services.ts` (imagen, alt y `whatsappMessage` propios). Un slide nuevo entra en `data/slides.ts`.
 - Enlaces de WhatsApp siempre por `buildWhatsAppUrl` o `WhatsAppButton`. El número no se imprime en la UI.
 - Imágenes de contenido con `next/image`. Fondos del hero: el sujeto hacia la derecha y aire a la izquierda, para el texto.
 - Accesibilidad ya resuelta y hay que conservarla: `:focus-visible`, `prefers-reduced-motion`, anclas con `scroll-padding`, rail de redes solo desde `xl`.
 - `pnpm images` sin flags solo genera lo que falta; `--force` regenera; `--only=a,b` filtra. Hace falta `APIMART_API_KEY`.
-- No commitear `.env.local`. No reescribir a mano `public/brand/`.
+- No commitear `.env.local` ni recrear `.env.example` salvo que Abraham lo pida. No reescribir a mano `public/brand/`.
 
 ## Contenido provisional
 
@@ -121,3 +123,6 @@ Hasta que Abraham pase los datos reales, no los trates como finales: horario lun
 - **2026-09-29** — Dirección real: Calle Los Pinos 156, Oficina 205-B, Miraflores. `address.unit` guarda la oficina y `mapsQuery` la omite para que el pin de Google Maps caiga en el edificio. Contacto enlaza «Cómo llegar» (`maps/dir/?api=1`).
 - **2026-09-29** — Redes reales en `lib/site.ts`: Instagram `almavia.clinic` y la URL canónica del perfil de Facebook (`people/Almavia-Almavia/61590138785982/`; el enlace `share/1FqgKF9S8h` que pasó Abraham redirige ahí). Se guardan sin parámetros de rastreo (`stkn`, `mibextid`, `rdid`).
 - **2026-09-29** — Despliegue Web Apps conectado a GitHub. Hostinger usa npm solo en producción para evitar el conflicto de Corepack con pnpm, `next.config.mjs` evita compilar la configuración con SWC y `build:hostinger` usa Webpack porque el fallback SWC WebAssembly de su plataforma no admite Turbopack.
+- **2026-10-01** — Se eliminó `.env.example`. Las claves (`NEXT_PUBLIC_WHATSAPP_NUMBER`, `NEXT_PUBLIC_SITE_URL`, `APIMART_API_KEY`, `SEEDREAM_MODEL`) viven en `.env.local` en local y, las dos públicas, en el panel de Hostinger. No hay que volver a versionar una plantilla ni copiar valores al repositorio.
+- **2026-10-02** — Bloque del equipo al final de `#nosotros` (después de los pilares), con tres retratos recortados a 4:5 y la cara a una altura y escala parecidas. Nombre, cargo y biografía son opcionales en `data/team.ts`: el `figcaption` solo aparece cuando hay datos. Abraham todavía no pasó nombres ni biografías. No lleva etiqueta de sección: el título «Ellos son parte del equipo Almavia.» ya lo nombra.
+- **2026-10-02** — Cards del equipo: retrato arriba y, debajo, cargo y biografía. Mientras falten datos se muestran «Equipo Almavia» y «Biografía próximamente.». El borde se ilumina con un `conic-gradient` dorado (3 capas: halo difuso, filete exterior de 3px y filete interior de 2px enmascarado sobre la foto; Abraham pidió que se notara más) (las clases `.team-glow` en `globals.css`) girado por `--glow-angle`, registrada con `@property`. La luz recorre el borde en loop (4,5 s por vuelta) mientras la card está activa; Abraham pidió que no siguiera al cursor. Con mouse se activa al pasar el cursor por encima. En pantallas `(hover: none)`, un `IntersectionObserver` enciende la card que cruza la franja central del viewport. Con `prefers-reduced-motion`, el borde se enciende entero y sin movimiento. Los tonos oscuros de Aura se leen como sombra sobre fondo crema: usar oro claro.

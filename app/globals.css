@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Ángulo animable del brillo de las cards del equipo */
+@property --glow-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
 /* Paleta oficial del brandbook ALMAVIA */
 @theme {
   --color-esencia: #eae2d2; /* Esencia Serena */
@@ -87,7 +94,77 @@
   }
 }
 
+/* Cards del equipo: borde que se ilumina (ver components/sections/TeamCard.tsx) */
+@layer components {
+  .team-card {
+    box-shadow: 0 0 0 1px rgb(91 71 57 / 0.12);
+    transition: box-shadow 0.6s var(--ease-suave);
+  }
+  .team-card[data-active="true"] {
+    box-shadow:
+      0 0 0 1px rgb(91 71 57 / 0.12),
+      0 24px 48px -28px rgb(62 48 39 / 0.45);
+  }
+
+  .team-glow {
+    position: absolute;
+    pointer-events: none;
+    /* oro saturado con núcleo casi blanco: sobre fondos crema, un tono oscuro se leería como sombra */
+    background: conic-gradient(
+      from calc(var(--glow-angle) - 90deg),
+      transparent 0deg,
+      rgb(212 161 95 / 0.35) 25deg,
+      #d4a15f 55deg,
+      #f0c987 75deg,
+      #fff6e3 90deg,
+      #f0c987 105deg,
+      #d4a15f 125deg,
+      rgb(212 161 95 / 0.35) 155deg,
+      transparent 180deg
+    );
+    opacity: 0;
+    transition: opacity 0.6s var(--ease-suave);
+  }
+  .team-glow-edge {
+    inset: -3px;
+  }
+  .team-glow-halo {
+    inset: -14px;
+    filter: blur(22px) saturate(1.4);
+  }
+  /* filete interior: la misma luz asoma 2px hacia dentro, sobre la foto */
+  .team-glow-inner {
+    inset: 0;
+    z-index: 1;
+    padding: 2px;
+    mask:
+      linear-gradient(#000 0 0) content-box exclude,
+      linear-gradient(#000 0 0);
+  }
+  .team-card[data-active="true"] .team-glow {
+    opacity: 1;
+  }
+
+  /* La luz recorre el borde en loop; se pausa al apagarse y retoma desde ahí */
+  .team-glow {
+    animation: team-glow-orbit 4.5s linear infinite paused;
+  }
+  .team-card[data-active="true"] .team-glow {
+    animation-play-state: running;
+  }
+  @keyframes team-glow-orbit {
+    from { --glow-angle: 0deg; }
+    to { --glow-angle: 360deg; }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  /* Sin movimiento: el borde se enciende entero, sin recorrido */
+  .team-glow {
+    background: var(--color-aura);
+    animation: none !important;
+  }
+
   html {
     scroll-behavior: auto;
   }
