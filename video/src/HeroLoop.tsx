@@ -19,6 +19,8 @@ export const heroLoopSchema = z.object({
   images: z.array(z.string()).min(2),
   /** Posición del recorte (object-position), útil para la versión vertical. */
   focus: z.string(),
+  /** Recorte propio para imágenes concretas (src → object-position). */
+  imageFocus: z.record(z.string(), z.string()).optional(),
 });
 
 export type HeroLoopProps = z.infer<typeof heroLoopSchema>;
@@ -34,7 +36,7 @@ const ANGLE = -100; // el barrido avanza de derecha a izquierda, como la cortina
  * zoom que se asienta. El último fotograma empalma con el primero, así el
  * <video loop> de la web no tiene cortes.
  */
-export const HeroLoop: React.FC<HeroLoopProps> = ({ images, focus }) => {
+export const HeroLoop: React.FC<HeroLoopProps> = ({ images, focus, imageFocus }) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
   const life = SLIDE_FRAMES + WIPE_FRAMES;
@@ -76,7 +78,7 @@ export const HeroLoop: React.FC<HeroLoopProps> = ({ images, focus }) => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: focus,
+            objectPosition: imageFocus?.[src] ?? focus,
             transform: `scale(${scale}) translateX(${drift}%)`,
           }}
         />

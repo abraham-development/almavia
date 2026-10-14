@@ -12,6 +12,8 @@ type Props = {
 };
 
 const PORTRAIT_QUERY = "(max-width: 1023px) and (orientation: portrait)";
+// Súbelo al volver a renderizar el video: el nombre del archivo no cambia y el navegador lo guarda en caché.
+const VIDEO_VERSION = "2026-10-14b";
 
 /**
  * Video de fondo renderizado con Remotion (video/src/HeroLoop.tsx).
@@ -56,8 +58,8 @@ export function HeroVideo({ poster, playing }: Props) {
           aria-hidden
           tabIndex={-1}
         >
-          <source src={`/video/hero-${variant}.webm`} type="video/webm" />
-          <source src={`/video/hero-${variant}.mp4`} type="video/mp4" />
+          <source src={`/video/hero-${variant}.webm?v=${VIDEO_VERSION}`} type="video/webm" />
+          <source src={`/video/hero-${variant}.mp4?v=${VIDEO_VERSION}`} type="video/mp4" />
         </video>
       )}
     </>

@@ -3,7 +3,7 @@ import { Composition } from "remotion";
 import { HeroLoop, heroLoopSchema, SLIDE_FRAMES, type HeroLoopProps } from "./HeroLoop";
 
 // Imágenes generadas con APIMart (scripts/generate-images.mjs → video/public/images).
-const images = ["images/hero-esencia.jpg", "images/hero-ritual.jpg", "images/espacio.jpg"];
+const images = ["images/hero-esencia.jpg", "images/hero-sueroterapia.jpg", "images/hero-diagnostico.jpg"];
 const FPS = 30;
 const duration = images.length * SLIDE_FRAMES; // 10,5 s
 
@@ -28,7 +28,14 @@ export const RemotionRoot: React.FC = () => {
         fps={FPS}
         width={1080}
         height={1920}
-        defaultProps={{ images, focus: "70% center" } satisfies HeroLoopProps}
+        defaultProps={
+          {
+            images,
+            focus: "70% center",
+            // en vertical, las caras de estas dos imágenes quedan más a la derecha
+            imageFocus: { "images/hero-sueroterapia.jpg": "82% center", "images/hero-diagnostico.jpg": "82% center" },
+          } satisfies HeroLoopProps
+        }
       />
     </>
   );

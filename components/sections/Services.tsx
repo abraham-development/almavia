@@ -55,36 +55,49 @@ function ServiceArea({ service, index }: { service: Service; index: number }) {
           </WhatsAppButton>
         </div>
 
-        <ul className="divide-y divide-tierra/15 border-y border-tierra/15 lg:col-span-7">
-          {service.treatments.map((treatment) => (
-            <li key={treatment.name}>
-              <details className="group">
-                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
-                  <span>
-                    <span className="block font-serif text-2xl font-light leading-snug text-tierra transition-colors group-hover:text-raiz-profundo sm:text-[1.75rem]">
-                      {treatment.name}
+        <div className="flex flex-col lg:col-span-7">
+          <ul className="divide-y divide-tierra/15 border-y border-tierra/15">
+            {service.treatments.map((treatment) => (
+              <li key={treatment.name}>
+                <details className="group">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
+                    <span>
+                      <span className="block font-serif text-2xl font-light leading-snug text-tierra transition-colors group-hover:text-raiz-profundo sm:text-[1.75rem]">
+                        {treatment.name}
+                      </span>
+                      <span className="mt-1.5 block font-serif text-lg italic text-aura-profundo">
+                        {treatment.tagline}
+                      </span>
                     </span>
-                    <span className="mt-1.5 block font-serif text-lg italic text-aura-profundo">
-                      {treatment.tagline}
+                    {/* «+» que gira a «×» al abrir */}
+                    <span
+                      aria-hidden
+                      className="relative mt-2 size-4 shrink-0 transition-transform duration-300 group-open:rotate-45"
+                    >
+                      <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-tierra" />
+                      <span className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-tierra" />
                     </span>
-                  </span>
-                  {/* «+» que gira a «×» al abrir */}
-                  <span
-                    aria-hidden
-                    className="relative mt-2 size-4 shrink-0 transition-transform duration-300 group-open:rotate-45"
-                  >
-                    <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-tierra" />
-                    <span className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-tierra" />
-                  </span>
-                </summary>
-                <Paragraphs
-                  text={treatment.description}
-                  className="max-w-prose space-y-3 pb-7 font-light leading-relaxed text-tierra/85"
-                />
-              </details>
-            </li>
-          ))}
-        </ul>
+                  </summary>
+                  <Paragraphs
+                    text={treatment.description}
+                    className="max-w-prose space-y-3 pb-7 font-light leading-relaxed text-tierra/85"
+                  />
+                </details>
+              </li>
+            ))}
+          </ul>
+          {service.desktopImage && (
+            <div className="relative mt-10 hidden min-h-80 flex-1 overflow-hidden lg:block">
+              <Image
+                src={service.desktopImage}
+                alt={service.desktopImageAlt ?? ""}
+                fill
+                sizes="(min-width: 1024px) 640px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          )}
+        </div>
       </div>
     </article>
   );

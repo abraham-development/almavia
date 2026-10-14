@@ -17,6 +17,9 @@ export type Service = {
   /** Opcional: la tarjeta se ve completa sin foto. */
   image?: string;
   imageAlt?: string;
+  /** Foto extra solo en escritorio, para llenar la columna de tratamientos cuando es corta. */
+  desktopImage?: string;
+  desktopImageAlt?: string;
   whatsappMessage: string;
 };
 
@@ -98,6 +101,9 @@ Cada protocolo se determina mediante una evaluación clínica, considerando las 
     ],
     image: "/images/servicio-regenerativa.webp",
     imageAlt: "Manos con guantes sosteniendo un tubo de plasma rico en plaquetas junto a una centrífuga",
+    desktopImage: "/images/servicio-sueroterapia.webp",
+    desktopImageAlt:
+      "Paciente recibiendo sueroterapia intravenosa, con un suero de vitaminas y viales junto a la profesional",
     whatsappMessage: "Hola Almavia, quisiera información sobre medicina regenerativa y bienestar.",
   },
   {

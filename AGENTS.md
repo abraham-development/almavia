@@ -93,7 +93,7 @@ El autoplay se detiene si la pestaña está oculta, si hay foco de teclado dentr
 
 El header sticky mide su altura con `ResizeObserver` y la publica en `--header-offset`. El hero y el `scroll-padding` de las anclas dependen de esa variable.
 
-Composiciones Remotion: `HeroLoop` 1920×1080 y `HeroLoopPortrait` 1080×1920. Fotogramas de entrada: `images/hero-esencia.jpg`, `images/hero-ritual.jpg`, `images/espacio.jpg` (no son los slides de imagen de la landing).
+Composiciones Remotion: `HeroLoop` 1920×1080 y `HeroLoopPortrait` 1080×1920. Fotogramas de entrada: `images/hero-esencia.jpg`, `images/hero-sueroterapia.jpg`, `images/hero-diagnostico.jpg` (no son los slides de imagen de la landing). `imageFocus` (opcional) fija un recorte propio por imagen; en vertical, sueroterapia y diagnóstico usan `82% center`. Tras cada render, subir `VIDEO_VERSION` en `components/hero/HeroVideo.tsx` (el nombre del archivo no cambia y el navegador sirve el video viejo de caché).
 
 ## Equipo
 
@@ -148,4 +148,8 @@ Hasta que Abraham pase los datos reales, no los trates como finales: horario lun
 - **2026-10-14** — Equipo en `#nosotros`: los cuatro en una sola fila desde `xl` (contenedor `max-w-7xl`, nombre en `text-2xl`); en `md`–`lg`, 2×2; en móvil, una columna.
 - **2026-10-14** — La intro de `#servicios` habla de un equipo multidisciplinario de medicina que trabaja en conjunto y abarca todas las áreas de la salud integral. No lista especialidades sueltas.
 - **2026-10-14** — En `#psicologia`, además de terapia individual, acompañamiento emocional y autoestima, está el ítem Desarrollo organizacional.
+- **2026-10-14** — `#medicina-regenerativa` tiene pocos tratamientos y en escritorio la columna derecha queda corta. `desktopImage` (`servicio-sueroterapia.webp`) llena ese hueco solo desde `lg`: paciente con suero de vitaminas y viales. En móvil no se muestra.
 - **2026-10-14** — Las biografías de la Dra. Etephany y del Dr. Richard son un resumen de dos párrafos, para que no pesen más que las de Paola y Rocío. No restaurar el texto largo original.
+- **2026-10-14** — Énfasis del hero en `text-aura-claro` (`#f2dcc6`, token nuevo): Aura Cálida se perdía sobre las paredes crema de las fotos (≈1,5:1). Degradado del hero más denso (`tierra-900` 85 % → 60 %) y sombra suave en el título: el peor punto del énfasis queda ≥3,2:1 en los tres slides de imagen. Aura sigue para detalles; sobre foto, `aura-claro`.
+- **2026-10-14** — En el video del hero, `hero-ritual` (piedras, frascos y bol: se leía como spa) se cambió por `hero-sueroterapia` (paciente recibiendo sueroterapia y enfermera ajustando el gotero). Para cambiar un fotograma: generar la imagen (`pnpm images --only=…`), editar `video/src/Root.tsx` y correr `pnpm video:render` (≈1,5 min, regenera mp4/webm/jpg de las dos orientaciones). Revisar el recorte vertical: el zoom del loop recorta más de lo que sugiere `object-position`.
+- **2026-10-14** — Video del hero sin imágenes de spa: se quitaron `hero-ritual` (piedras y bol, «las ollas») y `espacio` (recepción con sillón y jarrón). Loop actual: `hero-esencia` → `hero-sueroterapia` → `hero-diagnostico` (médica analizando la piel con un escáner y monitor). Abraham seguía viendo el video viejo por caché: de ahí `VIDEO_VERSION` como `?v=` en las fuentes del `<video>`.

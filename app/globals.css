@@ -20,6 +20,8 @@
   /* Tonos profundos de Aura Cálida y Raíz Serena para texto sobre fondos claros (contraste AA) */
   --color-aura-profundo: #9a7258;
   --color-raiz-profundo: #56634e;
+  /* Aura clara para énfasis sobre fotos oscurecidas (títulos del hero) */
+  --color-aura-claro: #f2dcc6;
   --color-whatsapp: #25d366;
 
   --font-serif: var(--font-cormorant), "Times New Roman", serif;

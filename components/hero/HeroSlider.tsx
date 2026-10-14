@@ -164,7 +164,7 @@ function HeroSlide({
       {/* Velos de contraste en Tierra Íntima */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-tierra-900/85 via-tierra/35 to-tierra/10 lg:bg-gradient-to-r lg:from-tierra-900/75 lg:via-tierra/30 lg:to-transparent"
+        className="absolute inset-0 bg-gradient-to-t from-tierra-900/85 via-tierra-900/55 to-tierra/10 lg:bg-gradient-to-r lg:from-tierra-900/85 lg:via-tierra-900/60 lg:to-transparent"
       />
 
       <div className="relative mx-auto flex h-full max-w-[1440px] items-end px-6 pb-24 sm:px-10 lg:items-center lg:px-24 lg:pb-0 xl:px-32">
@@ -175,12 +175,12 @@ function HeroSlide({
           <Line delay={700} active={isCurrent} className="mb-5">
             <p className="label text-esencia">{slide.eyebrow}</p>
           </Line>
-          <Heading className="font-serif text-5xl font-light leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
+          <Heading className="font-serif text-5xl font-light leading-[0.95] tracking-tight [text-shadow:0_2px_28px_rgb(47_36_28/0.35)] sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
             <Line delay={850} active={isCurrent} className="pb-1">
               {slide.title}
             </Line>{" "}
             <Line delay={1000} active={isCurrent} className="pb-2">
-              <em className="font-normal italic text-aura">{slide.highlight}</em>
+              <em className="font-normal italic text-aura-claro">{slide.highlight}</em>
             </Line>
           </Heading>
           <Line delay={1200} active={isCurrent} className="mt-5">

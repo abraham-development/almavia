@@ -67,18 +67,18 @@ const IMAGES = [
       "Serene Latina woman in her thirties in a soft beige knit sweater sitting on a sage green armchair in a warm psychologist office, hands relaxed, calm reflective smile, gentle window light, placed on the right third of the frame, wide empty cream wall on the left",
   },
   {
-    name: "hero-ritual",
+    name: "hero-sueroterapia",
     size: "16:9",
     width: 2400,
     prompt:
-      "Spa still life on a linen covered table: smooth river stones, a round wooden jar, amber glass dropper bottles, a ceramic bowl with botanical oil, dried eucalyptus branches, soft leaf shadows on a cream wall, composition weighted to the right",
+      "Relaxed Latina woman in her thirties reclining in a cream leather infusion armchair while receiving intravenous vitamin therapy, a clear IV drip bag hanging from a slim stainless steel stand beside her, a thin transparent line taped to her forearm with a small white medical dressing, a female nurse in a white coat gently checking the drip, both people and the IV stand confined to the right 40% of the frame, the left 60% is an empty plain warm cream wall with soft window light, wide shot of a calm modern medical wellness clinic",
   },
   {
-    name: "espacio",
+    name: "hero-diagnostico",
     size: "16:9",
     width: 2400,
     prompt:
-      "Interior of a calm boutique aesthetics clinic reception: arched doorway, limewashed cream walls, sage green velvet armchair, light oak wood counter, dried pampas and olive branches in a ceramic vase, warm afternoon sunlight",
+      "Female aesthetic physician in a white coat examining the cheek of a calm smiling Latina patient with a handheld digital skin analysis scanner, a slim monitor beside them showing a magnified scan of skin texture, seen from a distance: the patient sits in profile facing right and both people and the monitor are small and confined to the far right third of the frame, the left two thirds is an empty plain warm cream wall with soft window light, very wide shot of a modern medical aesthetics clinic",
   },
   // Nosotros: detalle de clavícula como en el brandbook (p. 26).
   {
@@ -102,6 +102,13 @@ const IMAGES = [
     width: 1400,
     prompt:
       "Close-up of a clinician's gloved hands holding a test tube of golden platelet-rich plasma beside a compact white laboratory centrifuge, sterile tray and syringe, bright clean medical clinic in cream and sage tones, portrait orientation",
+  },
+  {
+    name: "servicio-sueroterapia",
+    size: "3:4",
+    width: 1400,
+    prompt:
+      "Calm Latina woman in her thirties reclining in a cream medical armchair while receiving intravenous vitamin therapy. A clear IV bag with pale gold liquid hangs from a slim stand and a thin line is taped to her forearm with a small white dressing. On a side tray, several small glass vitamin vials in amber, sage and clear glass. A clinician in a white coat and gloves checks the drip. Warm cream clinic with sage accents, modest and clinical, portrait orientation",
   },
   {
     name: "servicio-estetica-corporal",
