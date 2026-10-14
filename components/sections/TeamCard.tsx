@@ -47,7 +47,7 @@ export function TeamCard({ member }: { member: TeamMember }) {
             src={member.image}
             alt={member.imageAlt}
             fill
-            sizes="(min-width: 1152px) 352px, (min-width: 768px) 30vw, 384px"
+            sizes="(min-width: 896px) 428px, (min-width: 768px) 48vw, 384px"
             className="object-cover transition-transform duration-[1500ms] ease-out group-data-[active=true]:scale-105"
           />
           {/* filete interior claro, como un passe-partout */}
@@ -66,12 +66,26 @@ export function TeamCard({ member }: { member: TeamMember }) {
           </p>
           <span aria-hidden className="mt-5 block h-px w-10 bg-aura" />
           {member.bio ? (
-            <p className="mt-5 font-light leading-relaxed text-tierra/85">{member.bio}</p>
+            <div className="mt-5 space-y-4 font-light leading-relaxed text-tierra/85">
+              {member.bio.split(/\n\n+/).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
           ) : (
             <p className="mt-5 font-serif text-lg font-light italic text-tierra/60">
               Biografía próximamente.
             </p>
           )}
+          {member.focus && member.focus.length > 0 ? (
+            <ul className="mt-6 space-y-1.5 text-sm font-light text-tierra/85">
+              {member.focus.map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span aria-hidden className="size-1 shrink-0 rounded-full bg-aura" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </div>
 

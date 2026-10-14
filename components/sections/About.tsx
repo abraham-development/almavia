@@ -97,7 +97,7 @@ export function About() {
             </p>
           </div>
 
-          <ul className="mx-auto mt-14 grid max-w-sm gap-10 md:max-w-none md:grid-cols-3 md:gap-8 lg:mt-20 lg:gap-10">
+          <ul className="mx-auto mt-14 grid max-w-sm gap-10 md:max-w-4xl md:grid-cols-2 md:gap-8 lg:mt-20 lg:gap-10">
             {team.map((member) => (
               <li key={member.id}>
                 <TeamCard member={member} />

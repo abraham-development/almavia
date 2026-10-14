@@ -4,7 +4,7 @@ export const site = {
   tagline: "Estética y salud integral",
   description:
     "Almavia es un espacio de estética y bienestar integral en Lima donde cada tratamiento acompaña tu proceso de renovación con empatía, confianza y cuidado profesional.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://almavia.pe",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://almavia.life",
   whatsapp: {
     // Solo dígitos, con código de país (Perú = 51). Se define en .env.local y no se
     // muestra en la página: solo se usa dentro de los enlaces de WhatsApp.

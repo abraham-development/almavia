@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # Almavia — memoria del proyecto
 
-Landing de **Almavia, estética y salud integral** (Lima). Una sola página en español (`lang="es"`, Open Graph `es_PE`). Abraham itera en código. La dirección y las redes ya son reales; los textos, el horario y el email siguen provisionales hasta que él los reemplace.
+Landing de **Almavia, estética y salud integral** (Lima). Una sola página en español (`lang="es"`, Open Graph `es_PE`). Abraham itera en código. La dirección, las redes y el equipo ya son reales. El horario y el email siguen provisionales hasta que él los reemplace.
 
 ## Cómo usar y actualizar esta memoria
 
@@ -39,7 +39,7 @@ No hay plantilla versionada: `.env.example` se eliminó en `alma1.3`. `.env*` es
 | Variable | Uso |
 |---|---|
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | Solo dígitos, con código de país (Perú `51`). No se muestra en la página. |
-| `NEXT_PUBLIC_SITE_URL` | Canónica. Por defecto `https://almavia.pe`. |
+| `NEXT_PUBLIC_SITE_URL` | Canónica. Por defecto `https://almavia.life`. |
 | `APIMART_API_KEY` | Solo `pnpm images`. |
 | `SEEDREAM_MODEL` | Por defecto `seedream-5-0-pro`. |
 
@@ -53,7 +53,7 @@ No hay plantilla versionada: `.env.example` se eliminó en `alma1.3`. `.env*` es
 | `lib/whatsapp.ts` | `buildWhatsAppUrl()` → `https://wa.me/…`. |
 | `lib/socials.ts` | Orden fijo: WhatsApp, Facebook, Instagram. |
 | `data/services.ts` | Tres servicios (faciales, corporales, bienestar). |
-| `data/team.ts` | Equipo en Nosotros: retrato 4:5, alt y `name`/`role`/`bio` opcionales. Se pinta con `components/sections/TeamCard.tsx`. |
+| `data/team.ts` | Equipo de `#nosotros`: cuatro fichas, en el orden del array. Campos opcionales y grilla en la sección Equipo. |
 | `data/slides.ts` | Slides del hero. El primero es `kind: "video"`; el resto, imagen. |
 | `components/header/` | Header sticky, TopBar, NavBar, menú móvil, Logo. |
 | `components/hero/` | Slider automático y video de fondo. |
@@ -95,6 +95,17 @@ El header sticky mide su altura con `ResizeObserver` y la publica en `--header-o
 
 Composiciones Remotion: `HeroLoop` 1920×1080 y `HeroLoopPortrait` 1080×1920. Fotogramas de entrada: `images/hero-esencia.jpg`, `images/hero-ritual.jpg`, `images/espacio.jpg` (no son los slides de imagen de la landing).
 
+## Equipo
+
+Cuatro fichas en `data/team.ts`. El orden visual es el del array; los `id` no coinciden con la posición:
+
+1. Dra. Etephany Caro Rivera (`integrante-2`, `equipo-2.webp`, traje blanco). Anestesióloga | Medicina Estética. Biografía en primera persona.
+2. Dr. Richard Jhonatan Navarro (`integrante-3`, `equipo-3.webp`, bata blanca). Director Médico | Cirujano General | Médico Estético. Biografía en primera persona.
+3. Lic. Paola B. Gambarini Kristen (`integrante-1`, `equipo-1.webp`, recepción). Psicóloga Clínica y Organizacional. `focus`: Bienestar emocional, Crecimiento personal, Desarrollo organizacional.
+4. Dra. Rocío M. Parrales (`integrante-4`, `equipo-4.webp`). Gastroenterología | Salud Digestiva y Bienestar Metabólico. Biografía en tercera persona, como la pasó Abraham.
+
+Si faltan `role` o `bio`, la tarjeta muestra «Equipo Almavia» y «Biografía próximamente.». La biografía se parte en párrafos con una línea en blanco. `focus` se lista debajo, con un punto de Aura. La grilla es una columna en móvil y 2×2 desde `md` (`md:max-w-4xl md:grid-cols-2`). El borde dorado se ilumina en loop mientras la card está activa y no sigue al cursor (detalle en Aprendizajes, 2026-10-02).
+
 ## Convenciones de código
 
 - Copy y comentarios en español. Componentes de servidor por defecto; `"use client"` solo en header, menú, hero, video, WhatsApp flotante y `TeamCard`.
@@ -107,12 +118,15 @@ Composiciones Remotion: `HeroLoop` 1920×1080 y `HeroLoopPortrait` 1080×1920. F
 
 ## Contenido provisional
 
-Hasta que Abraham pase los datos reales, no los trates como finales: horario lun–vie 9:00–20:00 y sáb 9:00–14:00; `hola@almavia.pe`. Facebook e Instagram ya son reales (el JSON-LD solo publica `sameAs` que empiecen por `http`). El mapa embebe `site.address.mapsQuery`.
+Hasta que Abraham pase los datos reales, no los trates como finales: horario lun–vie 9:00–20:00 y sáb 9:00–14:00; `hola@almavia.pe`. El equipo ya es real (sección Equipo). Facebook e Instagram ya son reales (el JSON-LD solo publica `sameAs` que empiecen por `http`). El mapa embebe `site.address.mapsQuery`.
 
 ## Despliegue en Hostinger
 
-- Web App: `https://darkgray-shrew-645074.hostingersite.com` hasta conectar el dominio definitivo.
-- Fuente: `abraham-development/almavia`, rama `main`, con despliegue automático.
+- Web App en producción: `https://almavia.life`. El DNS público ya resuelve, el certificado de Hostinger está activo y la redirección HTTP→HTTPS está encendida. El temporal `darkgray-shrew-645074.hostingersite.com` ya no es la canónica.
+- No hay base de datos en la cuenta. El aviso de hPanel al cambiar el dominio («actualizar el dominio en la base de datos») no aplica: la URL vive en `NEXT_PUBLIC_SITE_URL`.
+- `NEXT_PUBLIC_*` se incrusta en el build. Cambiar la canónica exige reemplazar el set completo de variables en Hostinger (sin borrar `NEXT_PUBLIC_WHATSAPP_NUMBER`) y lanzar un build nuevo. El valor de producción es `https://almavia.life`. El fallback del código, en `lib/site.ts`, es el mismo.
+- El build de producción del 2026-10-14 salió de `main` (`alama1.4`, `642cede`) y solo incorporó esa canónica. El equipo de cuatro, la grilla 2×2, `equipo-4.webp` y el fallback de `lib/site.ts` siguen en el working tree: no se publican hasta que Abraham lo pida.
+- Fuente: `abraham-development/almavia`, rama `main`, con despliegue automático. Usuario de hosting `u574572243`.
 - Hostinger compila con Node 24, npm, script `build:hostinger` (`next build --webpack`) y salida `.next`. El desarrollo local conserva pnpm 11.21.0 y el script `build` con Turbopack.
 - Variables de producción: `NEXT_PUBLIC_WHATSAPP_NUMBER` y `NEXT_PUBLIC_SITE_URL`; sus valores se configuran en Hostinger y no se versionan.
 - Se usa `next.config.mjs`: el entorno de Hostinger no puede cargar el binario SWC nativo de Next 16 por su versión de glibc y el fallback WebAssembly falla al compilar `next.config.ts`.
@@ -124,5 +138,7 @@ Hasta que Abraham pase los datos reales, no los trates como finales: horario lun
 - **2026-09-29** — Redes reales en `lib/site.ts`: Instagram `almavia.clinic` y la URL canónica del perfil de Facebook (`people/Almavia-Almavia/61590138785982/`; el enlace `share/1FqgKF9S8h` que pasó Abraham redirige ahí). Se guardan sin parámetros de rastreo (`stkn`, `mibextid`, `rdid`).
 - **2026-09-29** — Despliegue Web Apps conectado a GitHub. Hostinger usa npm solo en producción para evitar el conflicto de Corepack con pnpm, `next.config.mjs` evita compilar la configuración con SWC y `build:hostinger` usa Webpack porque el fallback SWC WebAssembly de su plataforma no admite Turbopack.
 - **2026-10-01** — Se eliminó `.env.example`. Las claves (`NEXT_PUBLIC_WHATSAPP_NUMBER`, `NEXT_PUBLIC_SITE_URL`, `APIMART_API_KEY`, `SEEDREAM_MODEL`) viven en `.env.local` en local y, las dos públicas, en el panel de Hostinger. No hay que volver a versionar una plantilla ni copiar valores al repositorio.
-- **2026-10-02** — Bloque del equipo al final de `#nosotros` (después de los pilares), con tres retratos recortados a 4:5 y la cara a una altura y escala parecidas. Nombre, cargo y biografía son opcionales en `data/team.ts`: el `figcaption` solo aparece cuando hay datos. Abraham todavía no pasó nombres ni biografías. No lleva etiqueta de sección: el título «Ellos son parte del equipo Almavia.» ya lo nombra.
+- **2026-10-02** — Bloque del equipo al final de `#nosotros` (después de los pilares), con retratos recortados a 4:5 y la cara a una altura y escala parecidas. Nombre, cargo, biografía y `focus` son opcionales en `data/team.ts`: la tarjeta solo muestra lo que exista. No lleva etiqueta de sección: el título «Ellos son parte del equipo Almavia.» ya lo nombra.
 - **2026-10-02** — Cards del equipo: retrato arriba y, debajo, cargo y biografía. Mientras falten datos se muestran «Equipo Almavia» y «Biografía próximamente.». El borde se ilumina con un `conic-gradient` dorado (3 capas: halo difuso, filete exterior de 3px y filete interior de 2px enmascarado sobre la foto; Abraham pidió que se notara más) (las clases `.team-glow` en `globals.css`) girado por `--glow-angle`, registrada con `@property`. La luz recorre el borde en loop (4,5 s por vuelta) mientras la card está activa; Abraham pidió que no siguiera al cursor. Con mouse se activa al pasar el cursor por encima. En pantallas `(hover: none)`, un `IntersectionObserver` enciende la card que cruza la franja central del viewport. Con `prefers-reduced-motion`, el borde se enciende entero y sin movimiento. Los tonos oscuros de Aura se leen como sombra sobre fondo crema: usar oro claro.
+- **2026-10-14** — Dominio definitivo `almavia.life`, ya con DNS público, certificado activo y redirección a HTTPS. No hay base de datos: el aviso de Hostinger al cambiar el dominio no aplica. La canónica es `NEXT_PUBLIC_SITE_URL` y Next la incrusta en el build. El correo sigue siendo `hola@almavia.pe`. El build publicado ese día es `alama1.4`; el equipo nuevo no iba en ese commit.
+- **2026-10-14** — Equipo completo, en este orden: Dra. Etephany Caro Rivera, Dr. Richard Jhonatan Navarro, Lic. Paola B. Gambarini Kristen (con `focus`) y Dra. Rocío M. Parrales (biografía en tercera persona). Grilla 2×2 desde `md`. El estado vigente está en la sección Equipo.

@@ -22,4 +22,4 @@
 | Key | `NEXT_PUBLIC_WHATSAPP_NUMBER` |
 | Value | Configurado directamente en Hostinger; no guardar aquí |
 | Key | `NEXT_PUBLIC_SITE_URL` |
-| Value | `https://darkgray-shrew-645074.hostingersite.com` hasta conectar el dominio definitivo |
+| Value | `https://almavia.life` |
