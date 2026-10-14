@@ -76,8 +76,8 @@ Ayuda a mejorar la sensación de limpieza, suavidad y luminosidad, ofreciendo un
   {
     id: "medicina-regenerativa",
     category: "Medicina regenerativa y bienestar",
-    title: "Cuidamos tu bienestar",
-    highlight: "desde el interior.",
+    title: "Renovación y vitalidad,",
+    highlight: "con respaldo médico.",
     intro:
       "Ofrecemos procedimientos orientados a acompañar el cuidado de la piel y atender necesidades específicas de salud y bienestar, con protocolos individualizados y supervisión médica.",
     treatments: [
