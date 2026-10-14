@@ -9,11 +9,12 @@ import { site } from "@/lib/site";
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": ["BeautySalon", "HealthAndBeautyBusiness"],
+  "@type": ["MedicalClinic", "HealthAndBeautyBusiness"],
   name: site.name,
+  slogan: site.slogan,
   description: site.description,
   url: site.url,
-  image: `${site.url}/images/hero-facial.webp`,
+  image: `${site.url}/images/hero-estetica.webp`,
   logo: `${site.url}/brand/logo-vertical.png`,
   email: site.email,
   address: {

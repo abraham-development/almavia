@@ -3,7 +3,7 @@
 //
 //   node scripts/generate-images.mjs                 # genera las que faltan
 //   node scripts/generate-images.mjs --force         # regenera todas
-//   node scripts/generate-images.mjs --only=hero-facial,servicio-facial
+//   node scripts/generate-images.mjs --only=hero-estetica,servicio-estetica
 //
 // Docs: https://docs.apimart.ai/en/api-reference/images/seedream-5-0-pro/generation
 //       https://docs.apimart.ai/en/api-reference/tasks/status
@@ -46,25 +46,25 @@ const IMAGES = [
       "Serene Latina woman in her thirties in soft profile with eyes closed, luminous glowing skin, one hand gently touching her neck, hair tied back, bare shoulders, placed on the right third of the frame, wide empty warm cream wall on the left, a sprig of eucalyptus in soft focus",
   },
   {
-    name: "hero-facial",
+    name: "hero-estetica",
     size: "16:9",
     width: 2400,
     prompt:
-      "Relaxed woman lying on a treatment bed with a soft sage green headband and linen towel, an aesthetician's gentle hands applying a facial serum with a soft brush, placed on the right half of the frame, calm spa treatment room with cream walls on the left",
+      "Latina woman in her thirties with luminous natural skin reclining on a cream medical aesthetics chair while a female aesthetic physician in a white coat and nitrile gloves gently assesses her cheekbone before a treatment, both people confined to the right 40% of the frame, the left 60% is an empty plain warm cream wall with soft window light, wide shot of a modern minimal medical aesthetics clinic",
   },
   {
-    name: "hero-corporal",
+    name: "hero-metabolica",
     size: "16:9",
     width: 2400,
     prompt:
-      "Close-up of a woman's bare back and shoulder receiving a gentle body treatment with warm botanical oil, therapist hands, draped linen towel in dusty rose tones, subject on the right side of the frame, soft creamy negative space on the left",
+      "Warm medical consultation: a smiling Latina female physician in a white coat talks with a relaxed patient across a light oak desk with a glass of water, a green apple and a tablet showing health charts, both people and the desk confined to the right 40% of the frame, the left 60% is an empty plain warm cream wall with soft window light, wide shot of a bright modern clinic office",
   },
   {
-    name: "hero-bienestar",
+    name: "hero-emocional",
     size: "16:9",
     width: 2400,
     prompt:
-      "Radiant Latina woman in her thirties with natural glowing skin and a soft genuine smile, wrapped in a plush cream spa robe, hair in a loose low bun, looking gently over her shoulder toward the camera, golden hour sunlight streaming through a large window creating warm glow on her face, blurred olive branches and sage linen curtains in the background, placed on the right third of the frame, soft creamy negative space on the left, confident and serene, luxury wellness campaign",
+      "Serene Latina woman in her thirties in a soft beige knit sweater sitting on a sage green armchair in a warm psychologist office, hands relaxed, calm reflective smile, gentle window light, placed on the right third of the frame, wide empty cream wall on the left",
   },
   {
     name: "hero-ritual",
@@ -88,27 +88,41 @@ const IMAGES = [
     prompt:
       "Intimate close-up of a woman's neck, collarbone and bare shoulder, glowing healthy skin, warm cocoa brown background, sculptural soft light, elegant and sensual but modest",
   },
-  // Tarjetas de servicios (vertical).
+  // Áreas de servicio (vertical): ambiente de clínica médica, no de spa.
   {
-    name: "servicio-facial",
+    name: "servicio-estetica",
     size: "3:4",
     width: 1400,
     prompt:
-      "Woman with eyes closed receiving a gentle facial treatment, gloved aesthetician hands with a jade gua sha stone, sage green towel, dusty rose backdrop, portrait orientation",
+      "Female aesthetic physician in a white medical coat and nitrile gloves carefully assessing the face of a calm Latina patient, marking facial points with a fine white pencil before a treatment, modern medical aesthetics consultation room with cream walls, clinical yet warm, portrait orientation",
   },
   {
-    name: "servicio-corporal",
+    name: "servicio-regenerativa",
     size: "3:4",
     width: 1400,
     prompt:
-      "Woman's waist and hip draped in cream linen towel during a body contouring and lymphatic drainage treatment, therapist hands, warm dusty rose light, portrait orientation",
+      "Close-up of a clinician's gloved hands holding a test tube of golden platelet-rich plasma beside a compact white laboratory centrifuge, sterile tray and syringe, bright clean medical clinic in cream and sage tones, portrait orientation",
   },
   {
-    name: "servicio-bienestar",
+    name: "servicio-estetica-corporal",
     size: "3:4",
     width: 1400,
     prompt:
-      "Hands of a woman holding a ceramic cup of herbal tea next to fresh herbs and a small notebook, wrapped in a soft sage knit blanket, holistic wellness and nutrition consultation, portrait orientation",
+      "Woman lying on a medical treatment bed covered with a white towel while a clinician in a white coat applies the handpiece of a sleek white body contouring radiofrequency device to her abdomen, modern aesthetic medicine clinic with warm cream walls, portrait orientation",
+  },
+  {
+    name: "servicio-psicologia",
+    size: "3:4",
+    width: 1400,
+    prompt:
+      "Psychology therapy session in a calm warm office: a Latina woman sitting on a sage green armchair speaking openly, seen over the shoulder of a female psychologist holding a notebook, soft window light, cream walls, olive branches in a ceramic vase, portrait orientation",
+  },
+  {
+    name: "servicio-digestiva",
+    size: "3:4",
+    width: 1400,
+    prompt:
+      "Friendly Latina female gastroenterologist in a white coat explaining to a patient with an anatomical model of the human digestive system on a light oak desk, stethoscope and tablet with health charts nearby, bright warm medical office, portrait orientation",
   },
 ];
 

@@ -17,7 +17,7 @@ export const team: TeamMember[] = [
     imageAlt:
       "Dra. Etephany Caro Rivera, anestesióloga de Almavia, con traje blanco en su consultorio",
     name: "Dra. Etephany Caro Rivera",
-    role: "Anestesióloga | Medicina Estética",
+    role: "Gerenta General | Anestesióloga | Medicina Estética",
     bio: `Soy médica especialista en Anestesiología, con formación en Medicina Estética y una visión de la medicina que integra la ciencia, la seguridad y el bienestar de cada paciente.
 
 Mi experiencia médica me ha permitido comprender la importancia de una atención individualizada, donde cada decisión debe estar respaldada por el conocimiento, el criterio clínico y el respeto por las necesidades de cada persona.

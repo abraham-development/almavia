@@ -24,16 +24,20 @@ const jost = Jost({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Almavia | Estética y salud integral en Lima",
+    default: "Almavia | Medicina estética y salud integral en Lima",
     template: "%s | Almavia",
   },
   description: site.description,
   keywords: [
-    "estética",
+    "medicina estética",
     "salud integral",
-    "tratamientos faciales",
-    "tratamientos corporales",
-    "bienestar",
+    "toxina botulínica",
+    "ácido hialurónico",
+    "medicina regenerativa",
+    "estética corporal",
+    "gastroenterología",
+    "obesidad",
+    "psicología",
     "Miraflores",
     "Lima",
   ],
@@ -41,9 +45,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_PE",
     siteName: "Almavia",
-    title: "Almavia | Estética y salud integral",
+    title: `Almavia | ${site.slogan}`,
     description: site.description,
-    images: [{ url: "/images/hero-facial.webp", width: 2400, height: 1350, alt: "Almavia" }],
+    images: [{ url: "/images/hero-estetica.webp", width: 2400, height: 1350, alt: "Almavia" }],
   },
   twitter: { card: "summary_large_image" },
 };
@@ -55,7 +59,8 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" data-scroll-behavior="smooth" className={`${cormorant.variable} ${jost.variable}`}>
-      <body>
+      {/* Una extensión puede añadir class en <body> antes de hidratar (p. ej. expansion-alids-init). */}
+      <body suppressHydrationWarning>
         <BrandGradients />
         {children}
       </body>

@@ -47,12 +47,12 @@ No hay plantilla versionada: `.env.example` se eliminó en `alma1.3`. `.env*` es
 
 | Ruta | Qué es |
 |---|---|
-| `app/page.tsx` | Header → Hero → Servicios → Nosotros → Contacto → Footer → WhatsApp flotante + JSON-LD `BeautySalon`. |
+| `app/page.tsx` | Header → Hero → Servicios → Nosotros → Contacto → Footer → WhatsApp flotante + JSON-LD `MedicalClinic` (con `slogan`). |
 | `app/layout.tsx`, `app/globals.css` | Fuentes, metadata, paleta y animaciones del hero. |
 | `lib/site.ts` | Nombre, tagline, dirección, horario, email, redes, WhatsApp y `navLinks`. |
 | `lib/whatsapp.ts` | `buildWhatsAppUrl()` → `https://wa.me/…`. |
 | `lib/socials.ts` | Orden fijo: WhatsApp, Facebook, Instagram. |
-| `data/services.ts` | Tres servicios (faciales, corporales, bienestar). |
+| `data/services.ts` | Cinco áreas (medicina estética, regenerativa y bienestar, estética corporal, psicología, salud digestiva y metabólica), cada una con sus tratamientos (`name`, `tagline`, `description`). Texto redactado por Almavia. |
 | `data/team.ts` | Equipo de `#nosotros`: cuatro fichas, en el orden del array. Campos opcionales y grilla en la sección Equipo. |
 | `data/slides.ts` | Slides del hero. El primero es `kind: "video"`; el resto, imagen. |
 | `components/header/` | Header sticky, TopBar, NavBar, menú móvil, Logo. |
@@ -99,7 +99,7 @@ Composiciones Remotion: `HeroLoop` 1920×1080 y `HeroLoopPortrait` 1080×1920. F
 
 Cuatro fichas en `data/team.ts`. El orden visual es el del array; los `id` no coinciden con la posición:
 
-1. Dra. Etephany Caro Rivera (`integrante-2`, `equipo-2.webp`, traje blanco). Anestesióloga | Medicina Estética. Biografía en primera persona.
+1. Dra. Etephany Caro Rivera (`integrante-2`, `equipo-2.webp`, traje blanco). Gerenta General | Anestesióloga | Medicina Estética. Biografía en primera persona.
 2. Dr. Richard Jhonatan Navarro (`integrante-3`, `equipo-3.webp`, bata blanca). Director Médico | Cirujano General | Médico Estético. Biografía en primera persona.
 3. Lic. Paola B. Gambarini Kristen (`integrante-1`, `equipo-1.webp`, recepción). Psicóloga Clínica y Organizacional. `focus`: Bienestar emocional, Crecimiento personal, Desarrollo organizacional.
 4. Dra. Rocío M. Parrales (`integrante-4`, `equipo-4.webp`). Gastroenterología | Salud Digestiva y Bienestar Metabólico. Biografía en tercera persona, como la pasó Abraham.
@@ -109,7 +109,7 @@ Si faltan `role` o `bio`, la tarjeta muestra «Equipo Almavia» y «Biografía p
 ## Convenciones de código
 
 - Copy y comentarios en español. Componentes de servidor por defecto; `"use client"` solo en header, menú, hero, video, WhatsApp flotante y `TeamCard`.
-- Datos de negocio solo en `lib/site.ts`. Un tratamiento nuevo entra en `data/services.ts` (imagen, alt y `whatsappMessage` propios). Un slide nuevo entra en `data/slides.ts`.
+- Datos de negocio solo en `lib/site.ts`. Un tratamiento nuevo entra en su área de `data/services.ts`; un área nueva lleva `whatsappMessage` propio y, si hay foto, `image` + `imageAlt`. Un slide nuevo entra en `data/slides.ts`.
 - Enlaces de WhatsApp siempre por `buildWhatsAppUrl` o `WhatsAppButton`. El número no se imprime en la UI.
 - Imágenes de contenido con `next/image`. Fondos del hero: el sujeto hacia la derecha y aire a la izquierda, para el texto.
 - Accesibilidad ya resuelta y hay que conservarla: `:focus-visible`, `prefers-reduced-motion`, anclas con `scroll-padding`, rail de redes solo desde `xl`.
@@ -141,4 +141,7 @@ Hasta que Abraham pase los datos reales, no los trates como finales: horario lun
 - **2026-10-02** — Bloque del equipo al final de `#nosotros` (después de los pilares), con retratos recortados a 4:5 y la cara a una altura y escala parecidas. Nombre, cargo, biografía y `focus` son opcionales en `data/team.ts`: la tarjeta solo muestra lo que exista. No lleva etiqueta de sección: el título «Ellos son parte del equipo Almavia.» ya lo nombra.
 - **2026-10-02** — Cards del equipo: retrato arriba y, debajo, cargo y biografía. Mientras falten datos se muestran «Equipo Almavia» y «Biografía próximamente.». El borde se ilumina con un `conic-gradient` dorado (3 capas: halo difuso, filete exterior de 3px y filete interior de 2px enmascarado sobre la foto; Abraham pidió que se notara más) (las clases `.team-glow` en `globals.css`) girado por `--glow-angle`, registrada con `@property`. La luz recorre el borde en loop (4,5 s por vuelta) mientras la card está activa; Abraham pidió que no siguiera al cursor. Con mouse se activa al pasar el cursor por encima. En pantallas `(hover: none)`, un `IntersectionObserver` enciende la card que cruza la franja central del viewport. Con `prefers-reduced-motion`, el borde se enciende entero y sin movimiento. Los tonos oscuros de Aura se leen como sombra sobre fondo crema: usar oro claro.
 - **2026-10-14** — Dominio definitivo `almavia.life`, ya con DNS público, certificado activo y redirección a HTTPS. No hay base de datos: el aviso de Hostinger al cambiar el dominio no aplica. La canónica es `NEXT_PUBLIC_SITE_URL` y Next la incrusta en el build. El correo sigue siendo `hola@almavia.pe`. El build publicado ese día es `alama1.4`; el equipo nuevo no iba en ese commit.
+- **2026-10-14** — El `<body>` del layout lleva `suppressHydrationWarning`. La clase `expansion-alids-init` no es de Almavia: la inyecta el navegador o una extensión antes de hidratar y React la reportaba como mismatch. El aviso solo se silencia en esa etiqueta, no en los hijos.
 - **2026-10-14** — Equipo completo, en este orden: Dra. Etephany Caro Rivera, Dr. Richard Jhonatan Navarro, Lic. Paola B. Gambarini Kristen (con `focus`) y Dra. Rocío M. Parrales (biografía en tercera persona). Grilla 2×2 desde `md`. El estado vigente está en la sección Equipo.
+- **2026-10-14** — Almavia es un **centro médico estético integral** (médicos y psicología), no un spa: nada de masajes ni lenguaje de spa. Frase de marca: «Equilibramos tu bienestar. Realzamos tu esencia.» (`site.slogan`), título del primer slide y del Open Graph. Servicios rehechos en cinco áreas con el texto que pasó Abraham: cada área tiene presentación fija a la izquierda y tratamientos en `<details>` a la derecha, con ancla propia (`#medicina-estetica`, etc.) y chips de acceso bajo el título. La foto de cada área es opcional.
+- **2026-10-14** — Fotos médicas generadas con Seedream (`hero-estetica`, `hero-metabolica`, `hero-emocional`, `servicio-{estetica,regenerativa,estetica-corporal,psicologia,digestiva}`); se borraron las de spa (`hero-facial`, `hero-corporal`, `hero-bienestar`, `servicio-facial`, `servicio-corporal`, `servicio-bienestar`; el corporal médico lleva otro nombre para no heredar la caché de `/_next/image`). Slides de imagen: medicina estética, salud digestiva y metabólica, bienestar emocional. En los prompts del hero hizo falta pedir «personas en el 40 % derecho, 60 % izquierdo pared crema vacía»: con «right half» Seedream invade el lado del texto. Open Graph y JSON-LD usan `hero-estetica`.

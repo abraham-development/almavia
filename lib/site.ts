@@ -2,8 +2,9 @@
 export const site = {
   name: "Almavia",
   tagline: "Estética y salud integral",
+  slogan: "Equilibramos tu bienestar. Realzamos tu esencia.",
   description:
-    "Almavia es un espacio de estética y bienestar integral en Lima donde cada tratamiento acompaña tu proceso de renovación con empatía, confianza y cuidado profesional.",
+    "Almavia es un centro de medicina estética y salud integral en Miraflores, Lima: medicina estética facial y corporal, medicina regenerativa, salud digestiva y metabólica, y psicología, con un equipo médico que te acompaña con empatía y criterio profesional.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://almavia.life",
   whatsapp: {
     // Solo dígitos, con código de país (Perú = 51). Se define en .env.local y no se
