@@ -99,12 +99,12 @@ Composiciones Remotion: `HeroLoop` 1920×1080 y `HeroLoopPortrait` 1080×1920. F
 
 Cuatro fichas en `data/team.ts`. El orden visual es el del array; los `id` no coinciden con la posición:
 
-1. Dra. Etephany Caro Rivera (`integrante-2`, `equipo-2.webp`, traje blanco). Gerenta General | Anestesióloga | Medicina Estética. Biografía en primera persona.
-2. Dr. Richard Jhonatan Navarro (`integrante-3`, `equipo-3.webp`, bata blanca). Director Médico | Cirujano General | Médico Estético. Biografía en primera persona.
+1. Dra. Etephany Caro Rivera (`integrante-2`, `equipo-2.webp`, traje blanco). Gerenta General | Anestesióloga | Medicina Estética. Biografía breve, en primera persona.
+2. Dr. Richard Jhonatan Navarro (`integrante-3`, `equipo-3.webp`, bata blanca). Director Médico | Cirujano General | Médico Estético. Biografía breve, en primera persona.
 3. Lic. Paola B. Gambarini Kristen (`integrante-1`, `equipo-1.webp`, recepción). Psicóloga Clínica y Organizacional. `focus`: Bienestar emocional, Crecimiento personal, Desarrollo organizacional.
 4. Dra. Rocío M. Parrales (`integrante-4`, `equipo-4.webp`). Gastroenterología | Salud Digestiva y Bienestar Metabólico. Biografía en tercera persona, como la pasó Abraham.
 
-Si faltan `role` o `bio`, la tarjeta muestra «Equipo Almavia» y «Biografía próximamente.». La biografía se parte en párrafos con una línea en blanco. `focus` se lista debajo, con un punto de Aura. La grilla es una columna en móvil y 2×2 desde `md` (`md:max-w-4xl md:grid-cols-2`). El borde dorado se ilumina en loop mientras la card está activa y no sigue al cursor (detalle en Aprendizajes, 2026-10-02).
+Si faltan `role` o `bio`, la tarjeta muestra «Equipo Almavia» y «Biografía próximamente.». La biografía se parte en párrafos con una línea en blanco. `focus` se lista debajo, con un punto de Aura. La grilla es una columna en móvil, 2×2 desde `md` y una sola fila desde `xl` (`xl:grid-cols-4`, contenedor `max-w-7xl`). El borde dorado se ilumina en loop mientras la card está activa y no sigue al cursor (detalle en Aprendizajes, 2026-10-02).
 
 ## Convenciones de código
 
@@ -145,3 +145,7 @@ Hasta que Abraham pase los datos reales, no los trates como finales: horario lun
 - **2026-10-14** — Equipo completo, en este orden: Dra. Etephany Caro Rivera, Dr. Richard Jhonatan Navarro, Lic. Paola B. Gambarini Kristen (con `focus`) y Dra. Rocío M. Parrales (biografía en tercera persona). Grilla 2×2 desde `md`. El estado vigente está en la sección Equipo.
 - **2026-10-14** — Almavia es un **centro médico estético integral** (médicos y psicología), no un spa: nada de masajes ni lenguaje de spa. Frase de marca: «Equilibramos tu bienestar. Realzamos tu esencia.» (`site.slogan`), título del primer slide y del Open Graph. Servicios rehechos en cinco áreas con el texto que pasó Abraham: cada área tiene presentación fija a la izquierda y tratamientos en `<details>` a la derecha, con ancla propia (`#medicina-estetica`, etc.) y chips de acceso bajo el título. La foto de cada área es opcional.
 - **2026-10-14** — Fotos médicas generadas con Seedream (`hero-estetica`, `hero-metabolica`, `hero-emocional`, `servicio-{estetica,regenerativa,estetica-corporal,psicologia,digestiva}`); se borraron las de spa (`hero-facial`, `hero-corporal`, `hero-bienestar`, `servicio-facial`, `servicio-corporal`, `servicio-bienestar`; el corporal médico lleva otro nombre para no heredar la caché de `/_next/image`). Slides de imagen: medicina estética, salud digestiva y metabólica, bienestar emocional. En los prompts del hero hizo falta pedir «personas en el 40 % derecho, 60 % izquierdo pared crema vacía»: con «right half» Seedream invade el lado del texto. Open Graph y JSON-LD usan `hero-estetica`.
+- **2026-10-14** — Equipo en `#nosotros`: los cuatro en una sola fila desde `xl` (contenedor `max-w-7xl`, nombre en `text-2xl`); en `md`–`lg`, 2×2; en móvil, una columna.
+- **2026-10-14** — La intro de `#servicios` habla de un equipo multidisciplinario de medicina que trabaja en conjunto y abarca todas las áreas de la salud integral. No lista especialidades sueltas.
+- **2026-10-14** — En `#psicologia`, además de terapia individual, acompañamiento emocional y autoestima, está el ítem Desarrollo organizacional.
+- **2026-10-14** — Las biografías de la Dra. Etephany y del Dr. Richard son un resumen de dos párrafos, para que no pesen más que las de Paola y Rocío. No restaurar el texto largo original.

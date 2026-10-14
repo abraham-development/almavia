@@ -84,7 +84,7 @@ export function About() {
       </div>
 
       <div aria-labelledby="equipo-titulo" role="group" className="bg-esencia-50">
-        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-12 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-12 lg:py-28">
           <div className="mx-auto max-w-2xl text-center">
             <h3
               id="equipo-titulo"
@@ -97,7 +97,7 @@ export function About() {
             </p>
           </div>
 
-          <ul className="mx-auto mt-14 grid max-w-sm gap-10 md:max-w-4xl md:grid-cols-2 md:gap-8 lg:mt-20 lg:gap-10">
+          <ul className="mx-auto mt-14 grid max-w-sm gap-10 md:max-w-4xl md:grid-cols-2 md:gap-8 lg:mt-20 lg:gap-10 xl:max-w-none xl:grid-cols-4 xl:gap-6">
             {team.map((member) => (
               <li key={member.id}>
                 <TeamCard member={member} />

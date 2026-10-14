@@ -47,7 +47,7 @@ export function TeamCard({ member }: { member: TeamMember }) {
             src={member.image}
             alt={member.imageAlt}
             fill
-            sizes="(min-width: 896px) 428px, (min-width: 768px) 48vw, 384px"
+            sizes="(min-width: 1280px) 290px, (min-width: 896px) 428px, (min-width: 768px) 48vw, 384px"
             className="object-cover transition-transform duration-[1500ms] ease-out group-data-[active=true]:scale-105"
           />
           {/* filete interior claro, como un passe-partout */}
@@ -57,9 +57,9 @@ export function TeamCard({ member }: { member: TeamMember }) {
           />
         </div>
 
-        <div className="flex flex-1 flex-col px-7 pb-9 pt-7">
+        <div className="flex flex-1 flex-col px-7 pb-9 pt-7 xl:px-6">
           {member.name && (
-            <h4 className="font-serif text-2xl font-light leading-snug sm:text-3xl">{member.name}</h4>
+            <h4 className="font-serif text-2xl font-light leading-snug sm:text-3xl xl:text-2xl">{member.name}</h4>
           )}
           <p className={`label text-aura-profundo ${member.name ? "mt-2" : ""}`}>
             {member.role ?? "Equipo Almavia"}

@@ -18,15 +18,9 @@ export const team: TeamMember[] = [
       "Dra. Etephany Caro Rivera, anestesióloga de Almavia, con traje blanco en su consultorio",
     name: "Dra. Etephany Caro Rivera",
     role: "Gerenta General | Anestesióloga | Medicina Estética",
-    bio: `Soy médica especialista en Anestesiología, con formación en Medicina Estética y una visión de la medicina que integra la ciencia, la seguridad y el bienestar de cada paciente.
+    bio: `Soy médica especialista en Anestesiología, con formación en Medicina Estética. Integro la ciencia, la seguridad y el bienestar de cada paciente, con una atención individualizada y criterio clínico.
 
-Mi experiencia médica me ha permitido comprender la importancia de una atención individualizada, donde cada decisión debe estar respaldada por el conocimiento, el criterio clínico y el respeto por las necesidades de cada persona.
-
-En el campo de la medicina estética, mi filosofía se basa en realzar la belleza natural, preservar la armonía y acompañar los cambios de cada etapa de la vida, buscando resultados sutiles, equilibrados y acordes con la identidad de cada paciente.
-
-Como parte de ALMAVIA, busco ofrecer una experiencia médica diferente: un espacio donde la estética y la salud se complementen, priorizando siempre la evaluación integral, la seguridad y el trato humano.
-
-Creo en una medicina estética que no busca transformar quién eres, sino ayudarte a sentirte bien contigo mismo, con naturalidad y confianza.`,
+En ALMAVIA busco realzar la belleza natural y acompañar cada etapa, con resultados sutiles y una atención que prioriza la evaluación integral y el trato humano.`,
   },
   {
     id: "integrante-3",
@@ -35,15 +29,9 @@ Creo en una medicina estética que no busca transformar quién eres, sino ayudar
       "Dr. Richard Jhonatan Navarro, director médico de Almavia, con bata blanca en el consultorio",
     name: "Dr. Richard Jhonatan Navarro",
     role: "Director Médico | Cirujano General | Médico Estético",
-    bio: `Médico cirujano con formación y experiencia en Cirugía General y Medicina Estética, comprometido con brindar una atención médica cercana, segura y personalizada.
+    bio: `Médico cirujano con formación en Cirugía General y Medicina Estética. En ALMAVIA acompaño cada proceso de forma cercana y personalizada, uniendo criterio médico, estética y bienestar.
 
-En ALMAVIA, desarrollo una visión integral del paciente, combinando el criterio médico, la experiencia clínica, la estética y el bienestar para acompañar cada proceso de manera individualizada.
-
-Creo que la medicina estética no se trata de transformar quién eres, sino de potenciar aquello que te hace único, buscando resultados naturales, armónicos y acordes con cada persona.
-
-Mi propósito es ofrecer una experiencia basada en la confianza, la seguridad y el acompañamiento, integrando medicina y tecnología con una atención humana y personalizada.
-
-ALMAVIA nace de esta filosofía: entender, acompañar y realzar tu esencia.`,
+Creo en una medicina estética que no transforma quién eres, sino que potencia lo que te hace único, con resultados naturales y una atención basada en la confianza y la seguridad.`,
   },
   {
     id: "integrante-1",

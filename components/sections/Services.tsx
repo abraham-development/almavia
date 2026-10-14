@@ -102,8 +102,9 @@ export function Services() {
           Medicina, estética y bienestar <em className="italic text-aura-profundo">en un mismo lugar.</em>
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-tierra/80 sm:text-lg">
-          Un equipo médico y de psicología que trabaja en conjunto. Cada tratamiento parte de una
-          evaluación profesional y se adapta a tu salud, tus objetivos y tu proceso.
+          Un equipo multidisciplinario de medicina trabaja en conjunto y abarca todas las áreas de tu
+          salud integral. Cada tratamiento parte de una evaluación profesional y se adapta a tus
+          objetivos y a tu proceso.
         </p>
 
         <nav aria-label="Áreas de servicio" className="mt-10">

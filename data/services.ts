@@ -166,6 +166,12 @@ Brindamos un espacio de escucha, acompañamiento y orientación profesional, don
         description:
           "Sesiones orientadas a fortalecer la autoestima, trabajar la autoimagen, reconocer necesidades emocionales y promover el bienestar personal.",
       },
+      {
+        name: "Desarrollo organizacional",
+        tagline: "Acompañamos a equipos y organizaciones en su proceso.",
+        description:
+          "Acompañamiento psicológico orientado al clima laboral, la comunicación, el liderazgo y el bienestar en el trabajo, con un enfoque humano y personalizado.",
+      },
     ],
     image: "/images/servicio-psicologia.webp",
     imageAlt: "Sesión de terapia psicológica en un consultorio cálido, con la paciente sentada en un sillón verde salvia",
